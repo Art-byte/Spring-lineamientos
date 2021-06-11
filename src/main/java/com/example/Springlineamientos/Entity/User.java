@@ -3,6 +3,9 @@ package com.example.Springlineamientos.Entity;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.Objects;
 import java.util.Set;
@@ -17,17 +20,29 @@ public class User implements Serializable {
     private Long id;
 
     @Column
+    @NotBlank
+    @Size(min = 5, max = 8, message = "No se cumplen las reglas de tamanio")
     private String firstName;
+
     @Column
+    @NotBlank
     private String lastName;
-    @Column
+
+    @Column(unique = true)
+    @Email
+    @NotBlank
     private String email;
-    @Column
+
+    @Column(unique = true)
+    @NotBlank
     private String username;
+
     @Column
+    @NotBlank
     private String password;
 
     @Transient
+    @NotBlank
     private String confirmPassword;
 
     @ManyToMany(fetch = FetchType.LAZY)

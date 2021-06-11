@@ -10,4 +10,5 @@ import org.springframework.stereotype.Service;
 public interface UserService {
     //Iterable quiere decir que es cualquier coleccion
     public Iterable<User> getAllUsers();
+    public User createUser(User user) throws Exception;
 }
