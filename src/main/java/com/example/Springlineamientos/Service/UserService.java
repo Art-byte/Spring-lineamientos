@@ -11,4 +11,6 @@ public interface UserService {
     //Iterable quiere decir que es cualquier coleccion
     public Iterable<User> getAllUsers();
     public User createUser(User user) throws Exception;
+    public User getUserById(Long id)throws Exception;
+    public User updateUser(User user)throws Exception;
 }
