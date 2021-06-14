@@ -1,5 +1,6 @@
 package com.example.Springlineamientos.Controllers;
 
+import com.example.Springlineamientos.Dto.ChangePasswordForm;
 import com.example.Springlineamientos.Entity.User;
 import com.example.Springlineamientos.Repository.RoleRepository;
 import com.example.Springlineamientos.Service.UserService;
@@ -75,6 +76,7 @@ public class UserController {
         model.addAttribute("roles",roleRepository.findAll());
         model.addAttribute("formTab","active");
         model.addAttribute("editMode","true");
+        model.addAttribute("passwordForm", new ChangePasswordForm(id));
 
         return "user-form/user-view";
     }
@@ -85,6 +87,7 @@ public class UserController {
             model.addAttribute("userForm", user);
             model.addAttribute("formTab","active");
             model.addAttribute("editMode","true");
+            model.addAttribute("passwordForm", new ChangePasswordForm(user.getId()));
         }else {
             try {
                 userService.updateUser(user);
@@ -97,6 +100,7 @@ public class UserController {
                 model.addAttribute("userList", userService.getAllUsers());
                 model.addAttribute("roles",roleRepository.findAll());
                 model.addAttribute("editMode","true");
+                model.addAttribute("passwordForm", new ChangePasswordForm(user.getId()));
             }
         }
 
