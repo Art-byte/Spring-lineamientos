@@ -56,6 +56,15 @@ public class UserServiceImpl implements UserService {
         return userRepository.save(toUser);
     }
 
+    @Override
+    public void deleteUser(Long id) throws Exception {
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new Exception("User not found in deleteUser"  + this.getClass().getName()));
+        userRepository.delete(user);
+    }
+
+
+
     //Metodo para proteccion de datos generales
     protected void mapUser(User from, User to){
         to.setUsername(from.getUsername());
